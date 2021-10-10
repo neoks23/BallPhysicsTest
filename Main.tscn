@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Player.cs" type="Script" id=1]
 [ext_resource path="res://CamRoot.cs" type="Script" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://Pit.cs" type="Script" id=6]
 [ext_resource path="res://Spawn.cs" type="Script" id=7]
 [ext_resource path="res://MovingPlatform.cs" type="Script" id=8]
+[ext_resource path="res://lblLevel.cs" type="Script" id=9]
+[ext_resource path="res://img/wasd.png" type="Texture" id=10]
+[ext_resource path="res://img/movement.png" type="Texture" id=11]
+[ext_resource path="res://img/movement2.png" type="Texture" id=12]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -46,7 +50,38 @@ albedo_color = Color( 0.992157, 1, 0, 1 )
 
 [sub_resource type="BoxShape" id=11]
 
+[sub_resource type="SpatialMaterial" id=21]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0, 0, 0, 1 )
+
 [sub_resource type="BoxShape" id=12]
+
+[sub_resource type="DynamicFontData" id=19]
+font_path = "res://fonts/nunito/NunitoRegular-vmABZ.ttf"
+
+[sub_resource type="DynamicFont" id=20]
+size = 128
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 19 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -87,7 +122,7 @@ script = ExtResource( 2 )
 
 [node name="Camera" type="ClippedCamera" parent="Player/CamRoot/h/v"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -13 )
-far = 200.0
+far = 300.0
 process_mode = 1
 
 [node name="Levels" type="Spatial" parent="."]
@@ -134,6 +169,41 @@ polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Levels/1/Spawn/SpawnHitbox"]
 transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3.31564, 0 )
 shape = SubResource( 11 )
+
+[node name="board" type="Spatial" parent="Levels/1"]
+transform = Transform( 0.866025, 0.0868241, 0.492404, 0, 0.984808, -0.173648, -0.5, 0.150384, 0.852868, 14.432, 4.09217, 25.852 )
+
+[node name="CSGBox" type="CSGBox" parent="Levels/1/board"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.4, 0.000131607, -3.63199, -0.000490189 )
+use_collision = true
+
+[node name="CSGBox2" type="CSGBox" parent="Levels/1/board"]
+transform = Transform( 5.77289, 0, 4.03745e-08, 0, 3, 0, 4.37114e-07, 0, -0.4, 0.000131607, -0.579521, -0.000490189 )
+use_collision = true
+material = SubResource( 21 )
+
+[node name="CSGBox3" type="CSGBox" parent="Levels/1/board"]
+transform = Transform( 6.15283, 0, 4.30318e-08, 0, 3, 0, 7.42591e-07, 0, -0.67954, 0.000131607, 0.395241, 0.287413 )
+use_collision = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Levels/1/board"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.459267 )
+texture = ExtResource( 11 )
+
+[node name="board2" type="Spatial" parent="Levels/1"]
+transform = Transform( 0.866025, -0.0868241, -0.492404, 0, 0.984808, -0.173648, 0.5, 0.150384, 0.852868, -14.3651, 4.09217, 25.852 )
+
+[node name="CSGBox" type="CSGBox" parent="Levels/1/board2"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.4, 0.000131607, -3.63199, -0.000490189 )
+use_collision = true
+
+[node name="CSGBox3" type="CSGBox" parent="Levels/1/board2"]
+transform = Transform( 6.15283, 0, 4.30318e-08, 0, 3, 0, 7.42591e-07, 0, -0.67954, 0.000131607, 0.395241, 0.287413 )
+use_collision = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Levels/1/board2"]
+transform = Transform( -0.8, 0, -1.50996e-07, 0, 0.8, 0, 1.20797e-07, 0, -1, 0, 0.371422, -0.459267 )
+texture = ExtResource( 12 )
 
 [node name="2" type="Spatial" parent="Levels"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 107.5, 119 )
@@ -707,57 +777,11 @@ transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3.31564, 0 )
 shape = SubResource( 11 )
 
 [node name="MovingPlatform7" type="CSGBox" parent="Levels/7"]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -32, -2, 10 )
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 20, -32, -2, 0 )
 use_collision = true
 script = ExtResource( 8 )
-maxY = 23.0
+maxY = 98.0
 minY = -2.0
-maxZ = 120.0
-minZ = 30.0
-moveSpeed = 0.1
-mode = 1
-
-[node name="MovingPlatform8" type="CSGBox" parent="Levels/7"]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -32, 43, -10 )
-use_collision = true
-script = ExtResource( 8 )
-maxY = 43.0
-minY = 18.0
-maxZ = 120.0
-minZ = 30.0
-moveSpeed = 0.1
-dir = true
-mode = 1
-
-[node name="MovingPlatform9" type="CSGBox" parent="Levels/7"]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -32, 38, 10 )
-use_collision = true
-script = ExtResource( 8 )
-maxY = 63.0
-minY = 38.0
-maxZ = 120.0
-minZ = 30.0
-moveSpeed = 0.1
-mode = 1
-
-[node name="MovingPlatform10" type="CSGBox" parent="Levels/7"]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -32, 83, -10 )
-use_collision = true
-script = ExtResource( 8 )
-maxY = 83.0
-minY = 58.0
-maxZ = 120.0
-minZ = 30.0
-moveSpeed = 0.1
-dir = true
-mode = 1
-
-[node name="MovingPlatform11" type="CSGBox" parent="Levels/7"]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, -32, 78, 10 )
-use_collision = true
-script = ExtResource( 8 )
-maxY = 103.0
-minY = 78.0
 maxZ = 120.0
 minZ = 30.0
 moveSpeed = 0.1
@@ -831,41 +855,333 @@ polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
 transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3.31564, 0 )
 shape = SubResource( 11 )
 
+[node name="CSGBox" type="CSGBox" parent="Levels/8"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 28 )
+use_collision = true
+
+[node name="CSGBox2" type="CSGBox" parent="Levels/8"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 10, -20, 0, 53 )
+use_collision = true
+
+[node name="CSGBox3" type="CSGBox" parent="Levels/8"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 78 )
+use_collision = true
+
+[node name="CSGBox7" type="CSGBox" parent="Levels/8"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 10, 0.0940399, 0, 97.3063 )
+use_collision = true
+
+[node name="CSGBox4" type="CSGBox" parent="Levels/8"]
+transform = Transform( 0.260472, 0, 9.84808, 0, 1, 0, -1.47721, 0, 1.73648, -9.60806, 0, 65.3552 )
+use_collision = true
+
+[node name="CSGBox5" type="CSGBox" parent="Levels/8"]
+transform = Transform( -0.260472, 0, 9.84808, 0, 1, 0, -1.47721, 0, -1.73648, -9.60806, 0, 40.4878 )
+use_collision = true
+
 [node name="9" type="Spatial" parent="Levels"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 173.595, 169.123, 704.239 )
+
+[node name="CSGBox10" type="CSGBox" parent="Levels/9"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+snap = 0.0001
+use_collision = true
+collision_mask = 3
+width = 33.511
+depth = 41.3671
+
+[node name="CSGBox" type="CSGBox" parent="Levels/9/CSGBox10"]
+transform = Transform( 0.173648, -0.492404, 0, 0.984808, 0.086824, 0, 0, 0, 20.8, -16.0675, 2.0402, -0.194611 )
+use_collision = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/9/CSGBox10/CSGBox"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, -0.995, -0.013, 0.001 )
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Levels/9/CSGBox10/CSGBox"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, 1.92413, -0.148224, 0.000999928 )
+sides = 32
+
+[node name="CSGBox2" type="CSGBox" parent="Levels/9/CSGBox10"]
+transform = Transform( -7.5904e-09, 2.15237e-08, 16.5, 0.984808, 0.086824, -7.69723e-15, -0.173648, 0.492404, -7.21238e-07, 0.133615, 2.0402, 19.9976 )
+use_collision = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/9/CSGBox10/CSGBox2"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, -0.995, -0.013, 0.001 )
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Levels/9/CSGBox10/CSGBox2"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, 1.92413, -0.148224, 0.000999928 )
+sides = 32
+
+[node name="Spawn" type="Spatial" parent="Levels/9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.257, 0 )
+script = ExtResource( 7 )
+
+[node name="CSGBox" type="CSGBox" parent="Levels/9/Spawn"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+use_collision = true
+collision_mask = 2
+height = 0.5
+material = SubResource( 10 )
+
+[node name="CSGPolygon" type="CSGPolygon" parent="Levels/9/Spawn/CSGBox"]
+transform = Transform( -0.5, 0, -1.74846e-07, 0, 0.5, 0, 4.37114e-08, 0, -2, -1, -0.25, -1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon2" type="CSGPolygon" parent="Levels/9/Spawn/CSGBox"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 2, 1, -0.25, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon3" type="CSGPolygon" parent="Levels/9/Spawn/CSGBox"]
+transform = Transform( -2.18557e-08, 0, 2, 0, 0.5, 0, -0.5, 0, -8.74228e-08, 1, -0.25, -1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon4" type="CSGPolygon" parent="Levels/9/Spawn/CSGBox"]
+transform = Transform( -2.18557e-08, 0, -2, 0, 0.5, 0, 0.5, 0, -8.74228e-08, -1, -0.25, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="SpawnHitbox" type="Area" parent="Levels/9/Spawn"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Levels/9/Spawn/SpawnHitbox"]
+transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3.31564, 0 )
+shape = SubResource( 11 )
 
 [node name="10" type="Spatial" parent="Levels"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 87, 718 )
 
-[node name="CSGBox5" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.3, 0, 86.413, 925.094 )
+[node name="CSGBox11" type="CSGBox" parent="Levels/10"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+snap = 0.0001
+use_collision = true
+collision_mask = 3
+width = 33.511
+depth = 41.3671
+
+[node name="CSGBox" type="CSGBox" parent="Levels/10/CSGBox11"]
+transform = Transform( 0.173648, -0.492404, 0, 0.984808, 0.086824, 0, 0, 0, 20.8, -16.0675, 2.0402, -0.194611 )
+use_collision = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/10/CSGBox11/CSGBox"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, -0.995, -0.013, 0.001 )
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Levels/10/CSGBox11/CSGBox"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, 1.92413, -0.148224, 0.000999928 )
+sides = 32
+
+[node name="CSGBox2" type="CSGBox" parent="Levels/10/CSGBox11"]
+transform = Transform( -7.5904e-09, 2.15237e-08, 16.5, 0.984808, 0.086824, -7.69723e-15, -0.173648, 0.492404, -7.21238e-07, 0.133615, 2.0402, 19.9976 )
+use_collision = true
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/10/CSGBox11/CSGBox2"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, -0.995, -0.013, 0.001 )
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Levels/10/CSGBox11/CSGBox2"]
+transform = Transform( 0.492404, -1.41828e-06, 0.0868241, 0.173648, -4.05102e-06, -0.984808, 1.09278e-09, 2, -1.09278e-09, 1.92413, -0.148224, 0.000999928 )
+sides = 32
+
+[node name="Spawn" type="Spatial" parent="Levels/10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18748, 0 )
+script = ExtResource( 7 )
+
+[node name="CSGBox" type="CSGBox" parent="Levels/10/Spawn"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+use_collision = true
+collision_mask = 2
+height = 0.5
+material = SubResource( 10 )
+
+[node name="CSGPolygon" type="CSGPolygon" parent="Levels/10/Spawn/CSGBox"]
+transform = Transform( -0.5, 0, -1.74846e-07, 0, 0.5, 0, 4.37114e-08, 0, -2, -1, -0.25, -1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon2" type="CSGPolygon" parent="Levels/10/Spawn/CSGBox"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 2, 1, -0.25, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon3" type="CSGPolygon" parent="Levels/10/Spawn/CSGBox"]
+transform = Transform( -2.18557e-08, 0, 2, 0, 0.5, 0, -0.5, 0, -8.74228e-08, 1, -0.25, -1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon4" type="CSGPolygon" parent="Levels/10/Spawn/CSGBox"]
+transform = Transform( -2.18557e-08, 0, -2, 0, 0.5, 0, 0.5, 0, -8.74228e-08, -1, -0.25, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="SpawnHitbox" type="Area" parent="Levels/10/Spawn"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Levels/10/Spawn/SpawnHitbox"]
+transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3.31564, 0 )
+shape = SubResource( 11 )
+
+[node name="CSGBox5" type="CSGBox" parent="Levels/10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.3, -3, -0.586998, 207.094 )
 snap = 0.0001
 use_collision = true
 collision_mask = 3
 width = 33.511
 depth = 115.274
 
-[node name="CSGBox6" type="CSGBox" parent="."]
-transform = Transform( 20, 0, 0, 0, 50, 0, 0, 0, 50, 0, 134.518, 1165.26 )
+[node name="CSGBox6" type="CSGBox" parent="Levels/10"]
+transform = Transform( 20, 0, 0, 0, 50, 0, 0, 0, 50, -3, 47.518, 447.26 )
 use_collision = true
 collision_mask = 3
 
-[node name="CSGCylinder" type="CSGCylinder" parent="CSGBox6"]
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/10/CSGBox6"]
 transform = Transform( -1.22392e-07, 2.1, -8.74228e-08, 0, -9.17939e-08, -2, -2.8, -9.17939e-08, 3.82137e-15, 0, 1.04423, -0.9947 )
 operation = 2
 sides = 64
 
-[node name="CSGBox7" type="CSGBox" parent="."]
-transform = Transform( 50, 0, 0, 0, 20, 0, 0, 0, 50, -1.90536, 84.2104, 1433.17 )
+[node name="CSGBox7" type="CSGBox" parent="Levels/10"]
+transform = Transform( 50, 0, 0, 0, 20, 0, 0, 0, 50, -4.90536, -2.7896, 715.17 )
 use_collision = true
 collision_mask = 3
 
-[node name="CSGSphere" type="CSGSphere" parent="CSGBox7"]
+[node name="CSGSphere" type="CSGSphere" parent="Levels/10/CSGBox7"]
 transform = Transform( 0.9, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, 0.840031, 0 )
 operation = 1
 
-[node name="CSGSphere2" type="CSGSphere" parent="CSGBox7/CSGSphere"]
+[node name="CSGSphere2" type="CSGSphere" parent="Levels/10/CSGBox7/CSGSphere"]
 transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
 operation = 2
 radial_segments = 32
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/10/CSGBox7/CSGSphere"]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, -1.10922, 0 )
+operation = 2
+sides = 32
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/10"]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, -4.905, -20.4847, 919.977 )
+use_collision = true
+sides = 32
+
+[node name="CSGBox" type="CSGBox" parent="Levels/10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3, -4.905, -21.0465, 818.348 )
+use_collision = true
+collision_mask = 3
+width = 50.0
+depth = 50.0
+
+[node name="CSGBox2" type="CSGBox" parent="Levels/10"]
+transform = Transform( 0.5, 0, 0, 0, 0.945984, -0.324215, 0, 0.324215, 0.945984, -4.905, -15.0944, 724.608 )
+use_collision = true
+collision_mask = 3
+width = 50.0
+depth = 50.0
+
+[node name="Heart" type="CSGBox" parent="Levels/10"]
+transform = Transform( -1.09278e-07, -2.82843, 2.82843, 0, 2.82843, 2.82843, -2.5, 1.23634e-07, -1.23634e-07, -38.6184, -3.01719, 929.821 )
+width = 0.761
+material = SubResource( 13 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Levels/10/Heart"]
+transform = Transform( -6.99382e-08, -1, 6.99382e-08, -0.707107, 1.77636e-15, -0.707107, 0.707107, -3.86358e-08, -0.707107, -0.123779, -0.0126171, 0.982927 )
+material = SubResource( 14 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Levels/10/Heart"]
+transform = Transform( -6.99382e-08, -1, 6.99382e-08, -0.707107, 1.77636e-15, -0.707107, 0.707107, -3.86358e-08, -0.707107, -0.123779, 0.98798, -0.0176697 )
+material = SubResource( 15 )
+
+[node name="T" type="CSGBox" parent="Levels/10"]
+transform = Transform( -1.09278e-07, 0, 2.5, 0, 10, 0, -2.5, 0, -1.09278e-07, 22.0591, -3.01719, 929.821 )
+width = 0.761
+material = SubResource( 16 )
+
+[node name="CSGBox4" type="CSGBox" parent="Levels/10/T"]
+transform = Transform( 1, 1.42109e-14, 2.11758e-22, 0, -4.37114e-08, -0.25, -3.55271e-15, 4, -4.37114e-08, 0, 0.754304, 0 )
+width = 0.761
+material = SubResource( 17 )
+
+[node name="H" type="CSGBox" parent="Levels/10"]
+transform = Transform( -1.09278e-07, 0, 2.5, 0, 10, 0, -2.5, 0, -1.09278e-07, 6.10082, -3.01719, 929.821 )
+width = 0.761
+material = SubResource( 18 )
+
+[node name="CSGBox8" type="CSGBox" parent="Levels/10/H"]
+transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0, 0, -4.20735 )
+width = 0.761
+material = SubResource( 18 )
+
+[node name="CSGBox9" type="CSGBox" parent="Levels/10/H"]
+transform = Transform( 1, 1.42109e-14, 2.11758e-22, 0, -4.37114e-08, -0.25, -3.55271e-15, 4, -4.37114e-08, 0, 0.0619974, -2.06527 )
+width = 0.761
+height = 1.57574
+material = SubResource( 18 )
+
+[node name="X" type="Spatial" parent="Levels/10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.575, -3.017, 929.821 )
+
+[node name="CSGBox10" type="CSGBox" parent="Levels/10/X"]
+transform = Transform( -1.09278e-07, 6.25, 2.16506, -3.88235e-22, 10.8253, -1.25, -2.5, -2.73196e-07, -9.46379e-08, -0.000484467, -0.000190735, 0.000366211 )
+width = 0.761
+material = SubResource( 18 )
+
+[node name="CSGBox14" type="CSGBox" parent="Levels/10/X/CSGBox10"]
+transform = Transform( 1, 0, -3.97904e-16, -8.88178e-16, 0.4, -0.173205, -3.55271e-15, 3.4641, 0.5, 0.0747681, 0.819595, -2.46423 )
+operation = 2
+width = 2.07494
+height = 1.74533
+
+[node name="CSGBox15" type="CSGBox" parent="Levels/10/X/CSGBox10"]
+transform = Transform( 1, 0, -1.53666e-14, -1.33227e-15, 0.4, -0.173205, 1.42109e-14, 3.4641, 0.5, 0.0747681, -0.849857, 2.35505 )
+operation = 2
+width = 2.07494
+height = 1.74533
+
+[node name="CSGBox12" type="CSGBox" parent="Levels/10/X"]
+transform = Transform( -1.09278e-07, -6.25, 2.16506, -3.88235e-22, 10.8253, 1.25, -2.5, 2.73196e-07, -9.46379e-08, -0.000484467, -0.000190735, 0.000366211 )
+width = 0.761
+material = SubResource( 18 )
+
+[node name="CSGBox13" type="CSGBox" parent="Levels/10/X/CSGBox12"]
+transform = Transform( 1, 0, 1.81899e-15, 4.44089e-16, -0.4, -0.173205, -3.55271e-15, 3.4641, -0.5, 0.0747681, 0.836615, 2.31683 )
+operation = 2
+width = 2.07494
+height = 1.74533
+
+[node name="CSGBox16" type="CSGBox" parent="Levels/10/X/CSGBox12"]
+transform = Transform( 1, 0, -1.45708e-14, -3.10862e-15, -0.4, -0.173205, 3.55271e-15, 3.4641, -0.5, 0.0747681, -0.832835, -2.50247 )
+operation = 2
+width = 2.07494
+height = 1.74533
+
+[node name="11" type="Spatial" parent="Levels"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.905, 66.515, 1637.98 )
+
+[node name="Spawn" type="Spatial" parent="Levels/11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.672325, 0 )
+script = ExtResource( 7 )
+
+[node name="CSGBox" type="CSGBox" parent="Levels/11/Spawn"]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+use_collision = true
+collision_mask = 2
+height = 0.5
+material = SubResource( 10 )
+
+[node name="CSGPolygon" type="CSGPolygon" parent="Levels/11/Spawn/CSGBox"]
+transform = Transform( -0.5, 0, -1.74846e-07, 0, 0.5, 0, 4.37114e-08, 0, -2, -1, -0.25, -1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon2" type="CSGPolygon" parent="Levels/11/Spawn/CSGBox"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 2, 1, -0.25, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon3" type="CSGPolygon" parent="Levels/11/Spawn/CSGBox"]
+transform = Transform( -2.18557e-08, 0, 2, 0, 0.5, 0, -0.5, 0, -8.74228e-08, 1, -0.25, -1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="CSGPolygon4" type="CSGPolygon" parent="Levels/11/Spawn/CSGBox"]
+transform = Transform( -2.18557e-08, 0, -2, 0, 0.5, 0, 0.5, 0, -8.74228e-08, -1, -0.25, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 1, 1.00343, 0.00343323, 1, 0 )
+
+[node name="SpawnHitbox" type="Area" parent="Levels/11/Spawn"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Levels/11/Spawn/SpawnHitbox"]
+transform = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 3.31564, 0 )
+shape = SubResource( 11 )
 
 [node name="Pit" type="Area" parent="."]
 transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 7.57646, 330.057 )
@@ -880,6 +1196,32 @@ shape = SubResource( 12 )
 transform = Transform( -0.707107, 0.707107, 1.03964e-07, 0.5, 0.5, 0.707107, 0.5, 0.5, -0.707107, 14.2746, 142.378, -21.3777 )
 shadow_enabled = true
 
+[node name="Control" type="Control" parent="."]
+margin_right = 368.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_right = 180.0
+margin_bottom = 34.0
+color = Color( 0.196078, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblLevel" type="Label" parent="Control"]
+margin_right = 1418.0
+margin_bottom = 176.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 20 )
+text = "    Level    1"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="body_entered" from="Levels/1/Spawn/SpawnHitbox" to="Levels/1/Spawn" method="OnSpawnHitboxBodyEntered"]
 [connection signal="body_entered" from="Levels/2/Spawn/SpawnHitbox" to="Levels/2/Spawn" method="OnSpawnHitboxBodyEntered"]
 [connection signal="body_entered" from="Levels/3/Spawn/SpawnHitbox" to="Levels/3/Spawn" method="OnSpawnHitboxBodyEntered"]
@@ -888,4 +1230,7 @@ shadow_enabled = true
 [connection signal="body_entered" from="Levels/6/Spawn/SpawnHitbox" to="Levels/6/Spawn" method="OnSpawnHitboxBodyEntered"]
 [connection signal="body_entered" from="Levels/7/Spawn/SpawnHitbox" to="Levels/7/Spawn" method="OnSpawnHitboxBodyEntered"]
 [connection signal="body_entered" from="Levels/8/Spawn/SpawnHitbox" to="Levels/8/Spawn" method="OnSpawnHitboxBodyEntered"]
+[connection signal="body_entered" from="Levels/9/Spawn/SpawnHitbox" to="Levels/9/Spawn" method="OnSpawnHitboxBodyEntered"]
+[connection signal="body_entered" from="Levels/10/Spawn/SpawnHitbox" to="Levels/10/Spawn" method="OnSpawnHitboxBodyEntered"]
+[connection signal="body_entered" from="Levels/11/Spawn/SpawnHitbox" to="Levels/11/Spawn" method="OnSpawnHitboxBodyEntered"]
 [connection signal="body_entered" from="Pit" to="Pit" method="OnPitBodyEntered"]
