@@ -7,3 +7,11 @@ D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTe
 D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.csproj.CoreCompileInputs.cache
 D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.dll
 D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.pdb
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\bin\Debug\BallPhysicsTest2.dll
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\bin\Debug\BallPhysicsTest2.pdb
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.csprojAssemblyReference.cache
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.AssemblyInfoInputs.cache
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.AssemblyInfo.cs
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.csproj.CoreCompileInputs.cache
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.dll
+D:\ImportantMap\coding\Godot\projects\BallPhysicsTest2\.mono\temp\obj\Debug\BallPhysicsTest2.pdb

@@ -10,16 +10,22 @@ public class Player : RigidBody
     float move_speed = 2.0f;
     float max_speed = 50.0f;
     ClippedCamera camera;
+    Pit p;
     
     public override void _Ready()
     {
         respawn = false;
         respawnLocation = new Vector3(0, 0, 0);
         camera = GetNode("../CamRoot/h/v/Camera") as ClippedCamera;
+        p = GetTree().Root.GetNode("Spatial/Pit") as Pit;
     }
 
     public override void _Process(float delta)
     {
+        if (Input.IsActionJustPressed("respawn"))
+        {
+            p.RespawnPlayer(this, this);
+        }
 
         if (respawn)
         {
@@ -45,12 +51,14 @@ public class Player : RigidBody
 
             if (Input.IsActionPressed("ui_down"))
             {
-                ApplyCentralImpulse(camera.GlobalTransform.basis.z * move_speed);
+                ApplyCentralImpulse((camera.GlobalTransform.basis.z * move_speed) / 2.0f);
             }
             if (Input.IsActionPressed("ui_up"))
             {
                 ApplyCentralImpulse(camera.GlobalTransform.basis.z * -move_speed);
             }
+            
+
         }
 
 
