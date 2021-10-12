@@ -34,6 +34,7 @@ public class Player : RigidBody
             {
                 AngularVelocity = aVel.Normalized() * max_speed;
             }
+
             if (Input.IsActionPressed("ui_left"))
             {
                 ApplyCentralImpulse(camera.GlobalTransform.basis.x * -move_speed);
@@ -42,11 +43,12 @@ public class Player : RigidBody
             {
                 ApplyCentralImpulse(camera.GlobalTransform.basis.x * move_speed);
             }
-
             if (Input.IsActionPressed("ui_down"))
             {
                 ApplyCentralImpulse(camera.GlobalTransform.basis.z * move_speed);
             }
+            
+
             if (Input.IsActionPressed("ui_up"))
             {
                 ApplyCentralImpulse(camera.GlobalTransform.basis.z * -move_speed);

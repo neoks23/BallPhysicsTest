@@ -1,0 +1,9 @@
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\bin\ExportRelease\BallPhysicsTest2.dll
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\bin\ExportRelease\BallPhysicsTest2.pdb
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.csproj.AssemblyReference.cache
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.GeneratedMSBuildEditorConfig.editorconfig
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.AssemblyInfoInputs.cache
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.AssemblyInfo.cs
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.csproj.CoreCompileInputs.cache
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.dll
+D:\ImportantMap\coding\GODOT\BallPhysicsTest2\.mono\temp\obj\ExportRelease\BallPhysicsTest2.pdb
