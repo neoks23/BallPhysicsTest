@@ -18,21 +18,21 @@ public class Pit : Area
     {
         if (body.Name == "PlayerRB")
         {
+
             Player p1 = body as Player;
-            spawnLocation = GetNode("../Levels/" + p1.progress.ToString() + "/Spawn") as Spatial;
-            RigidBody rbp1 = body as RigidBody;
-            rbp1.AxisLockLinearY = true;
-            rbp1.LinearVelocity = new Vector3(0,0,0);
-            rbp1.AngularVelocity = new Vector3(0,0,0);
-            rbp1.AxisLockLinearY = false;
-
-            Spatial spawn = spawnLocation.GetParent() as Spatial;
-            Vector3 sVec = spawn.Translation;
-            sVec -= new Vector3(0, 108.5f, 0);
-            p1.respawn = true;
-            p1.respawnLocation = spawnLocation.Translation + sVec;
-
+            RespawnPlayer(p1);
         }
+    }
+
+    public void RespawnPlayer(Player p1)
+    {
+        spawnLocation = GetNode("../Levels/" + p1.progress.ToString() + "/Spawn") as Spatial;
+
+        Spatial spawn = spawnLocation.GetParent() as Spatial;
+        Vector3 sVec = spawn.Translation;
+        sVec -= new Vector3(0, 108.5f, 0);
+        p1.respawn = true;
+        p1.respawnLocation = spawnLocation.Translation + sVec;
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
