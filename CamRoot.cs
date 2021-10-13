@@ -8,7 +8,7 @@ public class CamRoot : Spatial
     float camrot_h = 0;
     float camrot_v = 0;
     int cam_v_max = 75;
-    int cam_v_min = -55;
+    int cam_v_min = 20;
     float h_sensitivity = 0.1f;
     float v_sensitivity = 0.1f;
     float h_acceleration = 10.0f;
